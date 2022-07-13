@@ -37,6 +37,8 @@ app.use((req, res, next) => {
 });
 
 // API listener
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`HR API up and running on port ${port}...`);
 });
+
+module.exports = server

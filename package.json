@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon server.js",
+    "test": "mocha 'api/test/**/*.js' --recursive --timeout 60000 --exit"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +15,10 @@
     "body-parser": "^1.20.0",
     "express": "^4.18.1",
     "lodash.groupby": "^4.6.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.6",
+    "chai-http": "^4.3.0",
+    "mocha": "^10.0.0"
   }
 }
