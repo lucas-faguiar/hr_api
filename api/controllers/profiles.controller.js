@@ -1,6 +1,11 @@
 const groupBy = require("lodash.groupby");
+let profilesDataSet = require("../data/profiles.data.json");
 
-let profilesDataSet = require("../data/profile.data.json");
+// Schema validation setup
+const profilesSchema = require("../schema/profiles.schema.json");
+const Ajv = require("ajv");
+const ajv = new Ajv();
+const validate = ajv.compile(profilesSchema);
 
 exports.getProfiles = () => profilesDataSet;
 
@@ -52,7 +57,21 @@ exports.getAllProfiles = (req, res) => {
 };
 
 exports.addProfile = (req, res) => {
+  // Get new profile data
   const newProfile = req.body;
+
+  // Validation
+  const valid = validate(newProfile);
+  if (!valid) {
+    res.status(400).json({
+      status: 400,
+      message: "Profile data is invalid...",
+      payload: validate.errors,
+    });
+    return;
+  }
+
+  // Verify if profile is new and add
   const profile = this.getFilteredProfiles("name", newProfile.name);
   if (profile.length === 0) {
     profilesDataSet.push(newProfile);

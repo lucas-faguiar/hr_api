@@ -1,0 +1,13 @@
+{
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "salary": { "type": "string" },
+    "currency": { "type": "string" },
+    "department": { "type": "string" },
+    "sub_department": { "type": "string" },
+    "on_contract": { "type": "string" }
+  },
+  "required": ["name", "salary", "currency", "department", "sub_department"],
+  "additionalProperties": false
+}
