@@ -5,9 +5,6 @@ const port = process.env.PORT || 8080;
 
 app.use(express.json());
 
-// Api routes
-require("./api/routes/index")(app);
-
 // Keep alive endpoint
 app.get("/", (req, res) => {
   res.status(200).json({
@@ -16,6 +13,9 @@ app.get("/", (req, res) => {
     payload: null,
   });
 });
+
+// Api routes
+require("./api/routes/index")(app);
 
 // Error handler
 app.use((err, req, res, next) => {
@@ -41,4 +41,4 @@ const server = app.listen(port, () => {
   console.log(`HR API up and running on port ${port}...`);
 });
 
-module.exports = server
+module.exports = server;
