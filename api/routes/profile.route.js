@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const profilesController = require("../controllers/profiles.controller");
+const profilesController = require("../controllers/profile.controller");
 
 // 0. Get all records from the dataset.
 router.get("/", (req, res) => {

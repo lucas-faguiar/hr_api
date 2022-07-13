@@ -1,8 +1,8 @@
 const groupBy = require("lodash.groupby");
-let profilesDataSet = require("../data/profiles.data.json");
+let profilesDataSet = require("../data/profile.data.json");
 
 // Schema validation setup
-const profilesSchema = require("../schema/profiles.schema.json");
+const profilesSchema = require("../schema/profile.schema.json");
 const Ajv = require("ajv");
 const ajv = new Ajv();
 const validate = ajv.compile(profilesSchema);

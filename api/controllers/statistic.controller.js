@@ -1,4 +1,4 @@
-const profilesController = require("./profiles.controller");
+const profilesController = require("./profile.controller");
 
 const getMeanSalary = (salaries) =>
   salaries.reduce((total, cur, i, arr) => total + cur / arr.length, 0);

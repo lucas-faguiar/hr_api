@@ -1,5 +1,5 @@
-const profiles = require("./profiles.route");
-const statistics = require("./statistics.route");
+const profiles = require("./profile.route");
+const statistics = require("./statistic.route");
 
 module.exports = (app) => {
   app.use("/api/v1/profiles", profiles);
