@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  nodejs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: lucasfaguiar/hr-api
+    container_name: hr-api
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/usr/src/app/
+    command: npm run start
