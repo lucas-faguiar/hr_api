@@ -49,7 +49,7 @@ exports.filterProfiles = (options) => {
 
 exports.getAllProfiles = (req, res) => {
   const profiles = this.getProfiles();
-  res.status(200).json({
+  return res.status(200).json({
     status: 200,
     message: `${profiles.length} items found!`,
     payload: profiles,
@@ -63,27 +63,25 @@ exports.addProfile = (req, res) => {
   // Validation
   const valid = validate(newProfile);
   if (!valid) {
-    res.status(400).json({
+    return res.status(400).json({
       status: 400,
       message: "Profile data is invalid...",
       payload: validate.errors,
     });
-    return;
   }
 
   // Verify if profile is new and add
   const profile = this.getFilteredProfiles("name", newProfile.name);
   if (profile.length === 0) {
     profilesDataSet.push(newProfile);
-    res.status(201).json({
+    return res.status(201).json({
       status: 201,
       message: "Profile successfully created!",
       payload: null,
     });
-    return;
   }
 
-  res.status(409).json({
+  return res.status(409).json({
     status: 409,
     message: "Profile with this name already exists...",
     payload: profile[0],
@@ -95,15 +93,14 @@ exports.deleteProfileByName = (req, res) => {
   const profileToDelete = this.getFilteredProfiles("name", name);
   if (profileToDelete.length) {
     profilesDataSet = profilesDataSet.filter((profile) => profile.name != name);
-    res.status(200).json({
+    return res.status(200).json({
       status: 200,
       message: "Profile successfully deleted!",
       payload: null,
     });
-    return;
   }
 
-  res.status(404).json({
+  return res.status(404).json({
     status: 404,
     message: "Profile not found",
     payload: null,

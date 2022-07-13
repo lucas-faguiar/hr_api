@@ -47,15 +47,14 @@ exports.getStatistics = (req, res) => {
 
   // Send response
   if (!groupStatistics.length) {
-    res.status(404).json({
+    return res.status(404).json({
       status: 404,
       message: "No profiles found to calculate statistics...",
       payload: groupStatistics,
     });
-    return;
   }
 
-  res.status(200).json({
+  return res.status(200).json({
     status: 200,
     message: "Statistics successfully calculated!",
     payload: groupStatistics,
